@@ -1,0 +1,2145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <meta name="description" content="Some about your website">
+  <meta name="keywords" content="key-1, key-2">
+  <meta name="author" content="Oleksandr Sokolovskyi">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--    Favicon-->
+  <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+  <link rel="icon" href="/favicon.png" type="image/x-icon">
+
+  <!--    Google font Nunito-->
+  <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700,900" rel="stylesheet"> 
+  <!--    Google font Lato-->
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+
+  <!-- Foundation -->    
+  <link rel="stylesheet" href="css/foundation.min.css">
+  <!-- Select -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vue-select/3.0.2/vue-select.css">
+  <!--    Latest compiled and minified CSS -->
+  <link rel="stylesheet" type="text/css" href="css/main.min.css">
+
+</head>
+
+
+<body>
+ 
+  <div id="app" v-cloak>
+    <header class="header clearfix">
+        <!-- Mobile User Info -->
+        <div class="mobile-user-info-wrap clearfix">
+          <div class="user-info">
+            <img src="img/mobile-logo.png" alt="" class="mobile-logo">
+            <div class="mobile-user-desc">
+              <div class="mobile-user-name">Elodie_234</div>
+              <div class="mobile-user-plan">Basic</div>
+            </div>
+          </div>
+          <div class="mobile-progress-percent"><span>{{aboutProgressLine + detailsProgressLine + specialSkillsProgressLine}}</span> <span>%</span></div>
+          <div class="mobile-progress-line">
+              <div class="progress-line" v-bind:style="{ width:  aboutProgressLine + detailsProgressLine + specialSkillsProgressLine + '%'}"></div>
+            </div>
+        </div>
+        <!-- Navigation -->
+        <div class="navigation ">
+  
+          <div class="navigation-item" @click="totalStep = 1, currentAboveStep = 0" v-bind:class="{ active: totalStep == 1, check: totalStep > 1 }">
+            <div class="checkbox">
+             
+            </div>
+            <div class="item-desc">About</div>
+          </div>
+          <div class="navigation-item" @click="totalStep = 2, currentDetailsStep = 0" v-bind:class="{ active: totalStep == 2, check: totalStep > 2 }">
+            <div class="checkbox">
+                
+            </div>
+            <div class="item-desc">Details</div>
+          </div>
+          <div class="navigation-item" @click="totalStep = 3" v-bind:class="{ active: totalStep == 3 }">
+            <div class="checkbox">
+              
+            </div>
+            <div class="item-desc">Special skills</div>
+          </div>
+        </div>
+  
+    </header>
+    
+      <!-- Sidebar -->
+    <div class="sidebar">
+      <a href="#" class="logo"><img src="img/logo.png" alt="Logo"></a>
+  
+      <div class="user-information">
+        <div class="user-name">Elodie_234</div>
+        <div class="user-plan">Basic</div>
+  
+        <div class="round-progress-wrap">
+          <div class="round-progress">
+            <div class="progress-line" v-bind:style="{ top:  100 - (aboutProgressLine + detailsProgressLine + specialSkillsProgressLine) + '%'}"></div>
+          </div>
+          <div class="progress-in-percent"><span>{{aboutProgressLine + detailsProgressLine + specialSkillsProgressLine}}</span> <span>%</span></div>
+        </div>
+        
+  
+        <!-- Porgress Line -->
+        <div class="line-progress-set">
+          <div class="progress-item">
+            <div class="progress-title">About</div>
+            <div class="progress-line-wrap">
+              <div class="progress-line" v-bind:style="{ width:  aboutProgressLine*4.16 + '%'}" ></div>
+            </div>
+          </div>
+        </div>
+        <!-- Porgress Line -->
+        <div class="line-progress-set">
+          <div class="progress-item">
+            <div class="progress-title">Details</div>
+            <div class="progress-line-wrap">
+              <div class="progress-line" v-bind:style="{ width:  detailsProgressLine*4.16 + '%'}"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Porgress Line -->
+        <div class="line-progress-set">
+          <div class="progress-item">
+            <div class="progress-title">Special skills</div>
+            <div class="progress-line-wrap">
+              <div class="progress-line" v-bind:style="{ width:  specialSkillsProgressLine*2 + '%'}"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <button class="skip-to-the-end-btn">Skip to the end</button>
+    
+    </div>
+  
+    <!-- Main Section -->
+    <div class="main-section-wrap clearfix">
+      <div class="main-section">
+        <!-- About Steps -->
+        <div class="about-steps-wrap" v-if="totalStep == 1">
+            <transition name="fade">
+              <div class="about-window" v-if="currentAboveStep == 0">
+                <div class="section-title">Get started with Casting Frontier</div>
+                <!-- Section Item -->
+                <div class="section-item checked">
+                  <div class="section-item__icon">
+                    <img class="checked-icon" src="img/checkmark-icon.png" alt="">
+                    <img class="item-icon" src="" alt="">
+                  </div>
+                  <div class="section-item_descr ">
+                    <div class="title">Sign up for Casing Frontier</div>
+                    <div class="description">Create your Casting Frontier account</div>
+                  </div>
+                  
+                </div>
+        
+                <!-- Section Item -->
+                <div class="section-item" v-bind:class="{checked: headshotIsChecked}" @click="currentAboveStep = 1">
+                  <div class="section-item__icon">
+                    <img class="checked-icon" src="img/checkmark-icon.png" alt="">
+                    <img class="item-icon" src="img/camera-icon.png" alt="Camera Icon">
+                  </div>
+                  <div class="section-item_descr ">
+                    <div class="title">Add your headshots</div>
+                    <div class="description">Maximize your acting opportunities</div>
+                  </div>
+                  <div class="cta-btn"></div>
+                </div>
+        
+                <!-- Section Item -->
+                <div class="section-item" v-bind:class="{checked: ageIsCheked}" @click="currentAboveStep = 2">
+                  <div class="section-item__icon">
+                      <img class="checked-icon" src="img/checkmark-icon.png" alt="">
+                    <img class="item-icon" src="img/ic_age.png" alt="Age">
+                  </div>
+                  <div class="section-item_descr">
+                    <div class="title">Add your age</div>
+                    <div class="description">Add your date of birth if you are younger than 18</div>
+                  </div>
+                  <div class="cta-btn"></div>
+                </div>
+        
+                
+              </div>
+            </transition>
+            
+            <transition name="fade">
+              <div class="headshots-step" v-if="currentAboveStep == 1">
+                <div class="section-title">Add your headshots</div>
+                <div class="section-desc">Maximize your acting opportunities</div>
+                <div class="row headshot-wrap">
+                  <div class="columns large-6 medium-12 small-12 order-last-mobile">
+        
+                    <div class="add-headshot-block">
+                      <input type="file" id="headshot" name="headshot" class="headshot-input" ref="" @change="headshotChange()">
+                      <label class="headshot-label" for="headshot">
+                        <div class="cta-btn">ADD HEADSHOT</div>
+                      </label>
+                      
+                    </div>
+                  </div>
+                    <div class="columns large-6 medium-12 small-12 order-first-mobile">
+                      <div class="headshot-info-block">
+                        <div class="row">
+                          <div class="columns large-12 medium-12 small-6"><img class="headshot-img " src="img/headshot.png" alt="HEadshot"></div>
+                      
+                          <div class="info-desc columns large-12 medium-12 small-6">For best results use portrait oriented images and not landscape oriented.</div>
+                        </div>
+                      </div>
+                    </div>
+        
+                  
+                  
+              </div>
+              </div>
+            </transition>
+            
+            <transition name="fade">
+              <div class="add-age-step" v-if="currentAboveStep == 2">
+                <div class="section-title">
+                    Add your age
+                </div>
+                <div class="age-checkbox-wrap">
+                  <label for="over-18" class="theme__checkbox age-checkbox">
+                    <input type="radio" id="over-18" name="over-18" value="1" v-model="ageSwitch"> 
+                    <span class="checkmark"></span>
+                    <span class="age-description">I am over 18 (not required to list date of birth).</span>
+                  </label>
+        
+                  <label for="under-18" class="theme__checkbox age-checkbox">
+                      <input type="radio" id="under-18" name="over-18" value="2" v-model="ageSwitch"> 
+                      <span class="checkmark"></span>
+                      <span class="age-description">I am under 18.</span>
+                    </label>
+                </div> 
+        
+                <div class="age-input-block" v-if="ageSwitch == '2'">
+                  <div class="input-title">If under 18, please enter an actual date of birth.</div>
+                  <div class="age-input-wrap">
+                    <input class="age-input" type="date" value="2000-08-26" min="2000-01-01">
+                    
+                    <img src="img/unactive-checkbox.png" alt="" class="calendar-icon">
+                  </div>
+                </div>
+              </div>
+            </transition>
+            
+            <transition name="fade">
+              <div class="last-about-step" v-if="currentAboveStep == 3">
+                <div class="last-step-title">Great job!</div>
+                <img class="last-step-illustration" src="img/Illustration_step1.png" alt="">
+                <div class="last-step-desc">Adding your headshot will increase your chances of getting auditions.</div>
+                <div class="last-step-desc">Let’s keep up the good work and fill out the information about your appearance.</div>
+                <button class="get-started-btn" @click="totalStep = 2">GET STARTED</button>
+              </div>
+            </transition>
+        </div>
+        <!-- Details Steps --> 
+        <div class="details-steps-wrap" v-if="totalStep == 2">
+          <transition name="fade">
+            <div class="details-window"  v-if="currentDetailsStep == 0">
+              <div class="section-title">Let’s set up your profile</div>
+              <!-- Section Item -->
+              <div class="section-item" v-bind:class="{checked: addYourSize}" @click="currentDetailsStep = 1">
+                <div class="section-item__icon">
+                  <img class="checked-icon" src="img/checkmark-icon.png" alt="">
+                  <img class="item-icon" src="img/add-your-sizes.png" alt="">
+                </div>
+                <div class="section-item_descr ">
+                  <div class="title">Add your sizes</div>
+                  <div class="description">Adding your sizes leads to more acting opportunities</div>
+                </div>
+                <div class="cta-btn"></div>
+              </div>
+      
+              <!-- Section Item -->
+              <div class="section-item" v-bind:class="{checked: representation}" @click="currentDetailsStep = 2">
+                <div class="section-item__icon">
+                  <img class="checked-icon" src="img/checkmark-icon.png" alt="">
+                  <img class="item-icon" src="img/representation.png" alt="">
+                </div>
+                <div class="section-item_descr ">
+                  <div class="title">Do you have representation?</div>
+                  <div class="description">Let us know if you have one</div>
+                </div>
+                <div class="cta-btn"></div>
+              </div>
+      
+              <!-- Section Item -->
+              <div class="section-item" v-bind:class="{checked: union}" @click="currentDetailsStep = 3">
+                <div class="section-item__icon">
+                    <img class="checked-icon" src="img/checkmark-icon.png" alt="">
+                  <img class="item-icon" src="img/ic_union.png" alt="">
+                </div>
+                <div class="section-item_descr">
+                  <div class="title">Are you a part of union affiliation?</div>
+                  <div class="description">Are you a member of a union</div>
+                </div>
+                <div class="cta-btn"></div>
+              </div>
+      
+              
+            </div>
+          </transition>
+          <!-- Add your sizes -->
+          <div class="add-your-age-step" v-if="currentDetailsStep == 1">
+            <div class="section-title">Add your sizes</div>
+            <div class="row">
+              <div class="columns large-6 medium-6 small-12">
+                <div class="select-wrap">
+                  <div class="select-title">Weight</div>
+                    <div class="vue-input-select" id="select-weight">
+                      <v-select :options="weight" placeholder="n/a"></v-select>
+                    </div>
+                </div>
+              </div>
+              <div class="columns large-6 medium-6 small-12">
+                <div class="select-wrap">
+                  <div class="select-title">Height</div>
+                    <div class="vue-input-select" id="select-height">
+                      <v-select :options="height" placeholder="n/a"></v-select>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="columns large-6 medium-6 small-12">
+                <div class="select-wrap">
+                  <div class="select-title">Hair color</div>
+                    <div class="vue-input-select" >
+                      <v-select :options="hairColor" placeholder="n/a"></v-select>
+                    </div>
+                </div>
+              </div>
+              <div class="columns large-6 medium-6 small-12">
+                <div class="select-wrap">
+                  <div class="select-title">Height length/ Style</div>
+                    <div class="vue-input-select" >
+                      <v-select :options="hairLength" placeholder="n/a"></v-select>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="columns large-6 medium-6 small-12">
+                <div class="select-wrap">
+                  <div class="select-title">Eye color</div>
+                    <div class="vue-input-select">
+                      <v-select :options="eyeColor" placeholder="n/a"></v-select>
+                    </div>
+                </div>
+              </div>
+              <div class="columns large-6 medium-6 small-12">
+                <div class="select-wrap">
+                  <div class="select-title">Shoe Size</div>
+                    <div class="vue-input-select">
+                      <v-select :options="shoeSize" placeholder="n/a"></v-select>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <!-- Under 18 years -->
+            <div class="row" v-if="ageSwitch == 1">
+              <div class="columns large-6 medium-6 small-12">
+                <div class="select-wrap">
+                  <div class="select-title">Kids Size</div>
+                    <div class="vue-input-select">
+                      <v-select :options="kidsSize" placeholder="n/a"></v-select>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <!-- Over 18 years -->
+            <div v-if="ageSwitch == 2">
+              <div class="row">
+                <div class="columns large-6 medium-6 small-12">
+                  <div class="select-wrap">
+                    <div class="select-title">Shirt size</div>
+                      <div class="vue-input-select">
+                        <v-select :options="shirtSize" placeholder="n/a"></v-select>
+                      </div>
+                  </div>
+                </div>
+                <div class="columns large-6 medium-6 small-12">
+                  <div class="select-wrap">
+                    <div class="select-title">Bust</div>
+                      <div class="vue-input-select">
+                        <v-select :options="bust" placeholder="n/a"></v-select>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="columns large-6 medium-6 small-12">
+                  <div class="select-wrap">
+                    <div class="select-title">Pants size</div>
+                      <div class="vue-input-select">
+                        <v-select :options="pantsSize" placeholder="n/a"></v-select>
+                      </div>
+                  </div>
+                </div>
+                <div class="columns large-6 medium-6 small-12">
+                  <div class="select-wrap">
+                    <div class="select-title">Dress size</div>
+                      <div class="vue-input-select">
+                        <v-select :options="dressSize" placeholder="n/a"></v-select>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="columns large-6 medium-6 small-12">
+                  <div class="select-wrap">
+                    <div class="select-title">Hips size</div>
+                      <div class="vue-input-select">
+                        <v-select :options="hipsSize" placeholder="n/a"></v-select>
+                      </div>
+                  </div>
+                </div>
+                <div class="columns large-6 medium-6 small-12">
+                  <div class="select-wrap">
+                    <div class="select-title">Inseam size</div>
+                      <div class="vue-input-select">
+                        <v-select :options="inseamSize" placeholder="n/a"></v-select>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                  <div class="columns large-6 medium-6 small-12">
+                    <div class="select-wrap">
+                      <div class="select-title">Waist size</div>
+                        <div class="vue-input-select">
+                          <v-select :options="waistSize" placeholder="n/a"></v-select>
+                        </div>
+                    </div>
+                  </div>
+                  
+                </div>
+
+            </div>
+          </div>
+          <!-- Representation -->
+          <div class="representation-step" v-if="currentDetailsStep == 2">
+            <div class="section-title">Do you have representation?</div>
+            <label for="representation" class="theme__checkbox representation-checkbox"><input type="radio" id="representation" name="representation" value="1"> <span class="checkmark"></span> <span class="">I don’t have representation</span></label>
+            <div class="representation-info-title">If you have representation, please fill in the information below.</div>
+            <div class="select-wrap">
+              <div class="select-title">Commercial Agent</div>
+                <div class="vue-input-select" id="select-height">
+                  <v-select :options="commercialAgent" placeholder="ABA Talent"></v-select>
+                </div>
+            </div>
+            <div class="select-wrap">
+              <div class="select-title">Theatrical Agent</div>
+                <div class="vue-input-select" id="select-height">
+                  <v-select :options="theatricalAgent" placeholder="ABA Talent"></v-select>
+                </div>
+            </div>
+            <div class="select-wrap">
+              <div class="select-title">Print Agent</div>
+                <div class="vue-input-select" id="select-height">
+                  <v-select :options="printAgent" placeholder="ABA Talent"></v-select>
+                </div>
+            </div>
+          </div>
+          <!-- Member of Union -->
+          <div class="union-member-step" v-if="currentDetailsStep == 3">
+            <div class="section-title">Are you a member of a union?</div>
+            <label for="representation" class="theme__checkbox representation-checkbox"><input type="radio" id="union-member" name="union-member" value="1"> <span class="checkmark"></span> <span class="">I am not a union member</span></label>
+            <div class="representation-info-title">Please mark your union affiliation below.</div>
+
+            <div class="row">
+              <div class="columns large-6 medium-6 small-12 nopadding">
+                <div class="union-checkbox-wrap">
+                  <div class="checkbox-title">SAG-AFTRA</div>
+                  <div class="checkbox-wrap">
+                    <label for="sag-aftra-yes" class="theme__checkbox union-checkbox"><input type="radio" id="sag-aftra-yes" name="sag-aftra" value="1"> <span class="checkmark"></span> <span class="">Yes</span></label>
+                    <label for="sag-aftra-no" class="theme__checkbox union-checkbox"><input type="radio" id="sag-aftra-no" name="sag-aftra" value="2" checked> <span class="checkmark"></span> <span class="">No</span></label>
+                  </div>
+                </div>
+              </div>
+              <div class="columns large-6 medium-6 small-12 nopadding">
+                <div class="union-checkbox-wrap">
+                  <div class="checkbox-title">SAG-AFTRA eligible</div>
+                  <div class="checkbox-wrap">
+                    <label for="sag-aftra-eligible-yes" class="theme__checkbox union-checkbox"><input type="radio" id="sag-aftra-eligible-yes" name="sag-aftra-eligible" value="1"> <span class="checkmark"></span> <span class="">Yes</span></label>
+                    <label for="sag-aftra-eligible-no" class="theme__checkbox union-checkbox"><input type="radio" id="sag-aftra-eligible-no" name="sag-aftra-eligible" value="2" checked> <span class="checkmark"></span> <span class="">No</span></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="columns large-6 medium-6 small-12 nopadding">
+                <div class="union-checkbox-wrap">
+                  <div class="checkbox-title">SAG-AFTRA must join</div>
+                  <div class="checkbox-wrap">
+                    <label for="sag-aftra-join-yes" class="theme__checkbox union-checkbox"><input type="radio" id="sag-aftra-join-yes" name="sag-aftra-join" value="1" checked> <span class="checkmark"></span> <span class="">Yes</span></label>
+                    <label for="sag-aftra-join-no" class="theme__checkbox union-checkbox"><input type="radio" id="sag-aftra-join-no" name="sag-aftra-join" value="2" checked> <span class="checkmark"></span> <span class="">No</span></label>
+                  </div>
+                </div>
+              </div>
+              <div class="columns large-6 medium-6 small-12 nopadding">
+                <div class="union-checkbox-wrap">
+                  <div class="checkbox-title">Financial care</div>
+                  <div class="checkbox-wrap">
+                    <label for="financial-care-yes" class="theme__checkbox union-checkbox"><input type="radio" id="financial-care-yes" name="financial-care" value="1"> <span class="checkmark"></span> <span class="">Yes</span></label>
+                    <label for="financial-care-no" class="theme__checkbox union-checkbox"><input type="radio" id="financial-care-no" name="financial-care" value="2" checked> <span class="checkmark"></span> <span class="">No</span></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Success Message  -->
+          <transition name="fade">
+            <div class="last-about-step" v-if="currentDetailsStep == 4">
+              <div class="last-step-title">You’re on fire!</div>
+              <img class="last-step-illustration" src="img/Illustration_step1.png" alt="">
+              <div class="last-step-desc">Adding your sizes will help match your profile with appropriate roles.        </div>
+              <div class="last-step-desc">Let’s help you stand out from the crowd by adding your special skills!.</div>
+              <button class="get-started-btn" @click="upgradePopUp = true, totalStep = 3, setTime(600)">GET STARTED</button>
+            </div>
+          </transition>
+        </div>
+        <!-- Special skills Steps -->
+        <div class="special-skills-wrap" v-if="totalStep == 3">
+          <div class="special-skills-window" v-if="finalStep == 0" >
+            <div class="section-title">Let’s define your special skills</div>
+            <!-- Section Item Improvisation & Comedy -->
+            <div class="section-item">
+              <div class="section-item__icon">
+                <img class="checked-icon" src="img/checkmark-icon.png" alt="">
+                <img class="item-icon" src="img/ic_smile.png" alt="">
+              </div>
+              <div class="section-item_descr ">
+                <div class="title">Improvisation & Comedy</div>
+                <div class="description">Improvisation & Comedy Performance</div>
+              </div>
+              <div class="cta-btn"></div>
+            </div>
+            <!-- Section Item Acting genres, styles and techniques-->
+            <div class="section-item">
+              <div class="section-item__icon">
+                <img class="checked-icon" src="img/checkmark-icon.png" alt="">
+                <img class="item-icon" src="img/ic_film.png" alt="">
+              </div>
+              <div class="section-item_descr ">
+                <div class="title">Acting genres, styles and techniques</div>
+                <div class="description">Define your style</div>
+              </div>
+              <div class="cta-btn"></div>
+            </div>
+            <!-- Section Item Athletic-->
+            <div class="section-item" v-bind:class="{checked: athleticCheck}" @click="athleticSkillsSurvey = true">
+              <div class="section-item__icon">
+                <img class="checked-icon" src="img/checkmark-icon.png" alt="">
+                <img class="item-icon" src="img/ic_stopwatch.png" alt="">
+              </div>
+              <div class="section-item_descr ">
+                <div class="title">Athletic</div>
+                <div class="description">Extreme sports, General, Swimming, Track&Field</div>
+              </div>
+              <div class="cta-btn"></div>
+            </div>
+            <!-- Section Item Fighting & Weapons-->
+            <div class="section-item">
+              <div class="section-item__icon">
+                <img class="checked-icon" src="img/checkmark-icon.png" alt="">
+                <img class="item-icon" src="img/ic_target.png" alt="">
+              </div>
+              <div class="section-item_descr ">
+                <div class="title">Fighting & Weapons</div>
+                <div class="description">General weapons, Martial Arts, MA weapons, Stage Combat</div>
+              </div>
+              <div class="cta-btn"></div>
+            </div>
+            <!-- Section Item Languages & Accents-->
+            <div class="section-item">
+              <div class="section-item__icon">
+                <img class="checked-icon" src="img/checkmark-icon.png" alt="">
+                <img class="item-icon" src="img/ic_message.png" alt="">
+              </div>
+              <div class="section-item_descr ">
+                <div class="title">Languages & Accents</div>
+                <div class="description">Accents / Dialects & Languages</div>
+              </div>
+              <div class="cta-btn"></div>
+            </div>
+            <!-- Section Item Other -->
+            <div class="section-item">
+              <div class="section-item__icon">
+                <img class="checked-icon" src="img/checkmark-icon.png" alt="">
+                <img class="item-icon" src="img/ic_award.png" alt="">
+              </div>
+              <div class="section-item_descr ">
+                <div class="title">Other</div>
+                <div class="description">Driving skills. Horse riding, Licences, Miscellaneous, Stunts</div>
+              </div>
+              <div class="cta-btn"></div>
+            </div>
+            <!-- Section Item Performance -->
+            <div class="section-item" v-bind:class="{checked: performanceCheck}" @click="performanceSkillsSurvey = true">
+              <div class="section-item__icon">
+                <img class="checked-icon" src="img/checkmark-icon.png" alt="">
+                <img class="item-icon" src="img/ic_mic.png" alt="">
+              </div>
+              <div class="section-item_descr ">
+                <div class="title">Performance</div>
+                <div class="description">Circus skills, Dance, Instruments, Singing, Vocal range</div>
+              </div>
+              <div class="cta-btn"></div>
+            </div>
+            
+          </div>
+          <!-- Success Message  -->
+          <div class="last-about-step " v-if="finalStep == 1">
+            <div class="last-step-title">You're A Star! </div>
+            <img class="last-step-illustration" src="img/Illustration_step1.png" alt="">
+            <div class="last-step-desc">You did a great job of creating your talent profile.</div>
+            <div class="last-step-desc">Now you’re ready to start booking auditions.
+              Let’s go!</div>
+            <button class="get-started-btn final-success-message-btn see-profile-btn" >SEE MY PROFILE</button>
+            <button class="get-started-btn final-success-message-btn" >SEE ROLES</button>
+          </div>
+        </div>
+        </div>
+        <!-- Special Skills Survey -->
+        <!-- Section Item Athletic-->
+       
+        <div class="special-skills-survey athletic" v-if="athleticSkillsSurvey">
+          <div class="survey-header clearfix">
+            <div class="survey-title">Special skills : Athletic</div>
+            <button class="save-survey-btn" @click="athleticSkillsSurvey = false, athleticCheck = true, athleticStep = 1">SAVE & EXIT</button>
+            <div class="survey-progress-line-body">
+              <div class="survey-progress-line" v-bind:style="{ width:  athleticProgressLine + '%'}"></div>
+            </div>
+          </div>
+          <!-- Extreme sports -->
+          <div class="survey-body" v-if="athleticStep == 1">
+            <div class="survey-body_title">Extreme sports</div>
+            <div class="survey-body_hint">Define your level of expertise:</div>
+            <div class="survey-body_main-content">
+              <div class="row survey-table-header">
+                <div class="columns large-4"></div>
+                <div class="columns large-2"><span class="title-item">None</span></div>
+                <div class="columns large-2"><span class="title-item">Beginner</span></div>
+                <div class="columns large-2"><span class="title-item">Intermediate</span></div>
+                <div class="columns large-2"><span class="title-item">Advanced</span></div>
+              </div>
+              <!-- BMX -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">BMX</div>
+                <div class="columns large-2">
+                    <label for="bmx-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="bmx" id="bmx-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="bmx-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="bmx-beginner" name="bmx" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="bmx-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="bmx-intermediate" name="bmx" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="bmx-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="bmx-advanced" name="bmx" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Cycling General -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Cycling General</div>
+                <div class="columns large-2">
+                    <label for="cycling-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="cycling" id="cycling-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="cycling-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="cycling-beginner" name="cycling" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="cycling-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="cycling-intermediate" name="cycling" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="cycling-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="cycling-advanced" name="cycling" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Flatland & Freestyle -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Flatland & Freestyle</div>
+                <div class="columns large-2">
+                  <label for="freestyle-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="freestyle" id="freestyle-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="freestyle-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="freestyle-beginner" name="freestyle" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="freestyle-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="freestyle-intermediate" name="freestyle" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="freestyle-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="freestyle-advanced" name="freestyle" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Half Pipe -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Half Pipe</div>
+                <div class="columns large-2">
+                  <label for="half-pipe-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="half-pipe" id="half-pipe-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="half-pipe-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="half-pipe-beginner" name="half-pipe" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="half-pipe-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="half-pipe-intermediate" name="half-pipe" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="half-pipe-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="half-pipe-advanced" name="half-pipe" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Jumps -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Jumps</div>
+                <div class="columns large-2">
+                  <label for="jumps-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="jumps" id="jumps-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="jumps-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="jumps-beginner" name="jumps" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="jumps-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="jumps-intermediate" name="jumps" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="jumps-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="jumps-advanced" name="jumps" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- MTN Biking -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">MTN Biking</div>
+                <div class="columns large-2">
+                  <label for="biking-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="biking" id="biking-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="biking-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="biking-beginner" name="biking" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="biking-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="biking-intermediate" name="biking" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="biking-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="biking-advanced" name="biking" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Paragliding -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Paragliding</div>
+                <div class="columns large-2">
+                  <label for="paragliding-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="paragliding" id="paragliding-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="paragliding-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="paragliding-beginner" name="paragliding" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="paragliding-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="paragliding-intermediate" name="paragliding" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="paragliding-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="paragliding-advanced" name="paragliding" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Parkour -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Parkour</div>
+                <div class="columns large-2">
+                  <label for="parkour-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="parkour" id="parkour-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="parkour-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="parkour-beginner" name="parkour" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="parkour-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="parkour-intermediate" name="parkour" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="parkour-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="parkour-advanced" name="parkour" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Razor Scooter -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Razor Scooter</div>
+                <div class="columns large-2">
+                  <label for="scooter-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="scooter" id="scooter-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="scooter-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="scooter-beginner" name="scooter" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="scooter-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="scooter-intermediate" name="scooter" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="scooter-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="scooter-advanced" name="scooter" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Recumbent -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Recumbent</div>
+                <div class="columns large-2">
+                  <label for="recumbent-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="recumbent" id="recumbent-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="recumbent-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="recumbent-beginner" name="recumbent" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="recumbent-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="recumbent-intermediate" name="recumbent" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="recumbent-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="recumbent-advanced" name="recumbent" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- General -->
+          <div class="survey-body" v-if="athleticStep == 2">
+            <div class="survey-body_title">General</div>
+            <div class="survey-body_hint">Define your level of expertise:</div>
+            <div class="survey-body_main-content">
+              <div class="row survey-table-header">
+                <div class="columns large-4"></div>
+                <div class="columns large-2"><span class="title-item">None</span></div>
+                <div class="columns large-2"><span class="title-item">Beginner</span></div>
+                <div class="columns large-2"><span class="title-item">Intermediate</span></div>
+                <div class="columns large-2"><span class="title-item">Advanced</span></div>
+              </div>
+              <!-- Acrobatics -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Acrobatics</div>
+                <div class="columns large-2">
+                    <label for="acrobatics-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="acrobatics" id="acrobatics-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="acrobatics-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="acrobatics-beginner" name="acrobatics" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="acrobatics-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="acrobatics-intermediate" name="acrobatics" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="acrobatics-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="acrobatics-advanced" name="acrobatics" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Aerobics -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Aerobics</div>
+                <div class="columns large-2">
+                    <label for="aerobics-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="aerobics" id="aerobics-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="aerobics-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="aerobics-beginner" name="aerobics" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="aerobics-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="aerobics-intermediate" name="aerobics" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="aerobics-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="aerobics-advanced" name="aerobics" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Archery -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Archery</div>
+                <div class="columns large-2">
+                  <label for="archery-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="archery" id="archery-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="archery-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="archery-beginner" name="archery" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="archery-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="archery-intermediate" name="archery" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="archery-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="archery-advanced" name="archery" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Badminton -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Badminton</div>
+                <div class="columns large-2">
+                  <label for="badminton-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="badminton" id="badminton-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="badminton-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="badminton-beginner" name="badminton" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="hbadminton-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="badminton-intermediate" name="badminton" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="badminton-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="badminton-advanced" name="badminton" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Balloonist -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Balloonist</div>
+                <div class="columns large-2">
+                  <label for="balloonist-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="balloonist" id="balloonist-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="balloonist-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="balloonist-beginner" name="balloonist" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="balloonist-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="balloonist-intermediate" name="balloonist" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="balloonist-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="balloonist-advanced" name="balloonist" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Baseball -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Baseball</div>
+                <div class="columns large-2">
+                  <label for="baseball-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="baseball" id="baseball-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="baseball-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="baseball-beginner" name="baseball" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="baseball-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="baseball-intermediate" name="baseball" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="baseball-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="baseball-advanced" name="baseball" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Basketball -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Basketball</div>
+                <div class="columns large-2">
+                  <label for="basketball-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="basketball" id="basketball-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="basketball-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="basketball-beginner" name="basketball" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="basketball-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="basketball-intermediate" name="basketball" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="basketball-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="basketball-advanced" name="basketball" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Baton Twirling -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Baton Twirling</div>
+                <div class="columns large-2">
+                  <label for="twirling-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="twirling" id="twirling-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="twirling-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="twirling-beginner" name="twirling" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="twirling-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="twirling-intermediate" name="twirling" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="twirling-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="twirling-advanced" name="twirling" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Billiards Player -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Billiards Player</div>
+                <div class="columns large-2">
+                  <label for="billiards-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="billiards" id="billiards-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="billiards-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="billiards-beginner" name="billiards" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="billiards-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="billiards-intermediate" name="billiards" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="billiards-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="billiards-advanced" name="billiards" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Boating -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Boating</div>
+                <div class="columns large-2">
+                  <label for="boating-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="boating" id="boating-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="boating-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="boating-beginner" name="boating" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="boating-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="boating-intermediate" name="boating" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="boating-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="boating-advanced" name="boating" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Swimming -->
+          <div class="survey-body" v-if="athleticStep == 3">
+            <div class="survey-body_title">Swimming</div>
+            <div class="survey-body_hint">Define your level of expertise:</div>
+            <div class="survey-body_main-content">
+              <div class="row survey-table-header">
+                <div class="columns large-4"></div>
+                <div class="columns large-2"><span class="title-item">None</span></div>
+                <div class="columns large-2"><span class="title-item">Beginner</span></div>
+                <div class="columns large-2"><span class="title-item">Intermediate</span></div>
+                <div class="columns large-2"><span class="title-item">Advanced</span></div>
+              </div>
+              <!-- Back Stroke -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Back Stroke</div>
+                <div class="columns large-2">
+                    <label for="back-stroke-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="back-stroke" id="back-stroke-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="back-stroke-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="back-stroke-beginner" name="back-stroke" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="back-stroke-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="back-stroke-intermediate" name="back-stroke" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="back-stroke-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="back-stroke-advanced" name="back-stroke" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Breast Stroke -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Breast Stroke</div>
+                <div class="columns large-2">
+                    <label for="breast-stroke-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="breast-stroke" id="breast-stroke-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="breast-stroke-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="breast-stroke-beginner" name="breast-stroke" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="breast-stroke-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="breast-stroke-intermediate" name="breast-stroke" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="breast-stroke-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="breast-stroke-advanced" name="breast-stroke" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Butterfly -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Butterfly</div>
+                <div class="columns large-2">
+                  <label for="butterfly-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="butterfly" id="butterfly-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="butterfly-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="butterfly-beginner" name="butterfly" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="butterfly-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="butterfly-intermediate" name="butterfly" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="butterfly-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="butterfly-advanced" name="butterfly" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Diving -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Diving</div>
+                <div class="columns large-2">
+                  <label for="diving-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="diving" id="diving-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="diving-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="diving-beginner" name="diving" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="diving-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="diving-intermediate" name="diving" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="diving-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="diving-advanced" name="diving" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Freestyle -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Freestyle</div>
+                <div class="columns large-2">
+                  <label for="freestyle-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="freestyle" id="freestyle-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="freestyle-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="freestyle-beginner" name="freestyle" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="freestyle-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="freestyle-intermediate" name="freestyle" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="freestyle-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="freestyle-advanced" name="freestyle" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Swimming, general -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Swimming, general</div>
+                <div class="columns large-2">
+                  <label for="swimming-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="swimming" id="swimming-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="swimming-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="swimming-beginner" name="swimming" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="swimming-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="swimming-intermediate" name="swimming" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="swimming-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="swimming-advanced" name="swimming" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Synchronized -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Synchronized</div>
+                <div class="columns large-2">
+                  <label for="synchronized-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="synchronized" id="synchronized-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="synchronized-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="synchronized-beginner" name="synchronized" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="synchronized-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="synchronized-intermediate" name="synchronized" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="synchronized-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="synchronized-advanced" name="synchronized" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          <!-- Track & Field -->
+          <div class="survey-body" v-if="athleticStep == 4">
+            <div class="survey-body_title">Track & Field</div>
+            <div class="survey-body_hint">Define your level of expertise:</div>
+            <div class="survey-body_main-content">
+              <div class="row survey-table-header">
+                <div class="columns large-4"></div>
+                <div class="columns large-2"><span class="title-item">None</span></div>
+                <div class="columns large-2"><span class="title-item">Beginner</span></div>
+                <div class="columns large-2"><span class="title-item">Intermediate</span></div>
+                <div class="columns large-2"><span class="title-item">Advanced</span></div>
+              </div>
+              <!-- Broad Jump -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Broad Jump</div>
+                <div class="columns large-2">
+                    <label for="broad-jump-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="broad-jump" id="broad-jump-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="broad-jump-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="broad-jump-beginner" name="broad-jump" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="broad-jump-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="broad-jump-intermediate" name="broad-jump" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="broad-jump-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="broad-jump-advanced" name="broad-jump" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Discus -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Discus</div>
+                <div class="columns large-2">
+                    <label for="discus-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="discus" id="discus-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="discus-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="discus-beginner" name="discus" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="discus-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="discus-intermediate" name="discus" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="discus-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="discus-advanced" name="discus" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- High Jump -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">High Jump</div>
+                <div class="columns large-2">
+                  <label for="high-jump-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="high-jump" id="high-jump-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="high-jump-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="high-jump-beginner" name="high-jump" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="high-jump-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="high-jump-intermediate" name="high-jump" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="high-jump-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="high-jump-advanced" name="high-jump" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Hurdle -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Hurdle</div>
+                <div class="columns large-2">
+                  <label for="hurdle-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="hurdle" id="hurdle-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="hurdle-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="hurdle-beginner" name="hurdle" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="hurdle-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="hurdle-intermediate" name="hurdle" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="hurdle-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="hurdle-advanced" name="hurdle" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Javelin -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Javelin</div>
+                <div class="columns large-2">
+                  <label for="javelin-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="javelin" id="javelin-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="javelin-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="javelin-beginner" name="javelin" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="javelin-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="javelin-intermediate" name="javelin" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="javelin-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="javelin-advanced" name="javelin" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Long distance -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Long distance</div>
+                <div class="columns large-2">
+                  <label for="long-distance-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="long-distance" id="long-distance-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="long-distance-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="long-distance-beginner" name="long-distance" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="long-distance-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="long-distance-intermediate" name="long-distance" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="long-distance-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="long-distance-advanced" name="long-distance" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Long Jump -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Long Jump</div>
+                <div class="columns large-2">
+                  <label for="long-jump-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="long-jump" id="long-jump-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="long-jump-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="long-jump-beginner" name="long-jump" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="long-jump-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="long-jump-intermediate" name="long-jump" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="long-jump-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="long-jump-advanced" name="long-jump" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Marathon -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Marathon</div>
+                <div class="columns large-2">
+                  <label for="marathon-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="marathon" id="marathon-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="marathon-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="marathon-beginner" name="marathon" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="marathon-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="marathon-intermediate" name="marathon" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="marathon-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="marathon-advanced" name="marathon" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Pole Vault -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Pole Vault</div>
+                <div class="columns large-2">
+                  <label for="pole-vault-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="pole-vault" id="pole-vault-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="pole-vault-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="pole-vault-beginner" name="pole-vault" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="pole-vault-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="pole-vault-intermediate" name="pole-vault" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="pole-vault-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="pole-vault-advanced" name="pole-vault" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="survey-footer clearfix">
+            <button class="survey-continue-step" @click="continueSkillsStep()">Continue</button>
+            <button class="survey-skip-step" @click="athleticSkillsSurvey = false, athleticStep = 1">skip</button>
+          </div>
+        </div>
+          <!-- Section Item Performance-->
+        <div class="special-skills-survey performance" v-if="performanceSkillsSurvey">
+          <div class="survey-header clearfix">
+            <div class="survey-title">Special skills : Performance</div>
+            <button class="save-survey-btn" @click="performanceSkillsSurvey = false, performanceCheck = true, performanceStep = 1">SAVE & EXIT</button>
+            <div class="survey-progress-line-body">
+              <div class="survey-progress-line" v-bind:style="{ width:  performanceProgressLine + '%'}"></div>
+            </div>
+          </div>
+          <!-- Circus skills -->
+          <div class="survey-body" v-if="performanceStep == 1">
+            <div class="survey-body_title">Circus skills</div>
+            <div class="survey-body_hint">Define your level of expertise:</div>
+            <div class="survey-body_main-content">
+              <div class="row survey-table-header">
+                <div class="columns large-4"></div>
+                <div class="columns large-2"><span class="title-item">None</span></div>
+                <div class="columns large-2"><span class="title-item">Beginner</span></div>
+                <div class="columns large-2"><span class="title-item">Intermediate</span></div>
+                <div class="columns large-2"><span class="title-item">Advanced</span></div>
+              </div>
+              <!-- Aerial work -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Aerial work</div>
+                <div class="columns large-2">
+                  <label for="aerial-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="aerial" id="aerial-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="aerial-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="aerial-beginner" name="aerial" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="aerial-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="aerial-intermediate" name="aerial" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="aerial-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="aerial-advanced" name="aerial" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Clown -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Clown</div>
+                <div class="columns large-2">
+                    <label for="clown-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="clown" id="clown-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="clown-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="clown-beginner" name="clown" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="clown-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="clown-intermediate" name="clown" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="clown-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="clown-advanced" name="clown" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Contortionist -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Contortionist</div>
+                <div class="columns large-2">
+                  <label for="contortionist-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="contortionist" id="contortionist-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="contortionist-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="contortionist-beginner" name="contortionist" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="contortionist-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="contortionist-intermediate" name="contortionist" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="contortionist-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="contortionist-advanced" name="contortionist" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Fire eater -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Fire eater</div>
+                <div class="columns large-2">
+                  <label for="fire-eater-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="fire-eater" id="fire-eater-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="fire-eater-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="fire-eater-beginner" name="fire-eater" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="fire-eater-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="fire-eater-intermediate" name="fire-eater" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="fire-eater-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="fire-eater-advanced" name="fire-eater" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Fire juggler -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Fire juggler</div>
+                <div class="columns large-2">
+                  <label for="fire-juggler-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="fire-juggler" id="fire-juggler-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="fire-juggler-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="fire-juggler-beginner" name="fire-juggler" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="fire-juggler-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="fire-juggler-intermediate" name="fire-juggler" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="fire-juggler-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="fire-juggler-advanced" name="fire-juggler" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Hula Hoop -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Hula Hoop</div>
+                <div class="columns large-2">
+                  <label for="hula-hoop-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="hula-hoop" id="hula-hoop-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="hula-hoop-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="hula-hoop-beginner" name="hula-hoop" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="hula-hoop-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="hula-hoop-intermediate" name="hula-hoop" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="hula-hoop-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="hula-hoop-advanced" name="hula-hoop" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Juggler -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Juggler</div>
+                <div class="columns large-2">
+                  <label for="juggler-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="juggler" id="juggler-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="juggler-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="juggler-beginner" name="juggler" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="juggler-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="juggler-intermediate" name="juggler" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="juggler-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="juggler-advanced" name="juggler" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Mime -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Mime</div>
+                <div class="columns large-2">
+                  <label for="mime-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="mime" id="mime-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="mime-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="mime-beginner" name="mime" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="mime-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="mime-intermediate" name="mime" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="mime-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="mime-advanced" name="mime" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Stilt walker -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Stilt walker</div>
+                <div class="columns large-2">
+                  <label for="stilt-walker-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="stilt-walker" id="stilt-walker-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="stilt-walker-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="stilt-walker-beginner" name="stilt-walker" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="stilt-walker-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="stilt-walker-intermediate" name="stilt-walker" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="stilt-walker-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="stilt-walker-advanced" name="stilt-walker" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Trapeze -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Trapeze</div>
+                <div class="columns large-2">
+                  <label for="trapeze-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="trapeze" id="trapeze-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="trapeze-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="trapeze-beginner" name="trapeze" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="trapeze-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="trapeze-intermediate" name="trapeze" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="trapeze-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="trapeze-advanced" name="trapeze" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Dance -->
+          <div class="survey-body" v-if="performanceStep == 2">
+            <div class="survey-body_title">Dance</div>
+            <div class="survey-body_hint">Define your level of expertise:</div>
+            <div class="survey-body_main-content">
+              <div class="row survey-table-header">
+                <div class="columns large-4"></div>
+                <div class="columns large-2"><span class="title-item">None</span></div>
+                <div class="columns large-2"><span class="title-item">Beginner</span></div>
+                <div class="columns large-2"><span class="title-item">Intermediate</span></div>
+                <div class="columns large-2"><span class="title-item">Advanced</span></div>
+              </div>
+              <!-- Ballet -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Ballet</div>
+                <div class="columns large-2">
+                    <label for="ballet-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="ballet" id="ballet-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="ballet-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="ballet-beginner" name="ballet" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="ballet-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="ballet-intermediate" name="ballet" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="ballet-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="ballet-advanced" name="ballet" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Ballroom -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Ballroom</div>
+                <div class="columns large-2">
+                    <label for="ballroom-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="ballroom" id="ballroom-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="ballroom-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="ballroom-beginner" name="ballroom" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="ballroom-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="ballroom-intermediate" name="ballroom" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="ballroom-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="ballroom-advanced" name="ballroom" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Belly -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Belly</div>
+                <div class="columns large-2">
+                  <label for="belly-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="belly" id="belly-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="belly-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="belly-beginner" name="belly" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="belly-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="belly-intermediate" name="belly" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="belly-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="belly-advanced" name="belly" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Bollywood / Indian -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Bollywood / Indian</div>
+                <div class="columns large-2">
+                  <label for="bollywood-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="bollywood" id="bollywood-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="bollywood-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="bollywood-beginner" name="bollywood" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="bollywood-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="bollywood-intermediate" name="bollywood" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="bollywood-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="bollywood-advanced" name="bollywood" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Break -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Break</div>
+                <div class="columns large-2">
+                  <label for="break-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="break" id="break-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="break-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="break-beginner" name="break" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="break-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="break-intermediate" name="break" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="break-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="break-advanced" name="break" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Clog -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Clog</div>
+                <div class="columns large-2">
+                  <label for="clog-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="clog" id="clog-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="clog-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="clog-beginner" name="clog" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="clog-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="clog-intermediate" name="clog" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="clog-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="clog-advanced" name="clog" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Club / Freestyle -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Club / Freestyle</div>
+                <div class="columns large-2">
+                  <label for="club-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="club" id="club-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="club-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="club-beginner" name="club" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="club-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="club-intermediate" name="club" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="club-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="club-advanced" name="club" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Contra dancing -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Contra dancing</div>
+                <div class="columns large-2">
+                  <label for="contra-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="contra" id="contra-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="contra-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="contra-beginner" name="contra" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="contra-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="contra-intermediate" name="contra" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="contra-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="contra-advanced" name="contra" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Disco -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Disco</div>
+                <div class="columns large-2">
+                  <label for="disco-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="disco" id="disco-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="disco-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="disco-beginner" name="disco" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="disco-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="disco-intermediate" name="disco" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="disco-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="disco-advanced" name="disco" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Flamenco -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Flamenco</div>
+                <div class="columns large-2">
+                  <label for="flamenco-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="flamenco" id="flamenco-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="flamenco-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="flamenco-beginner" name="flamenco" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="flamenco-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="flamenco-intermediate" name="flamenco" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="flamenco-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="flamenco-advanced" name="flamenco" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Instruments -->
+          <div class="survey-body" v-if="performanceStep == 3">
+            <div class="survey-body_title">Instruments</div>
+            <div class="survey-body_hint">Define your level of expertise:</div>
+            <div class="survey-body_main-content">
+              <div class="row survey-table-header">
+                <div class="columns large-4"></div>
+                <div class="columns large-2"><span class="title-item">None</span></div>
+                <div class="columns large-2"><span class="title-item">Beginner</span></div>
+                <div class="columns large-2"><span class="title-item">Intermediate</span></div>
+                <div class="columns large-2"><span class="title-item">Advanced</span></div>
+              </div>
+              <!-- Accordion -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Accordion</div>
+                <div class="columns large-2">
+                    <label for="accordion-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="accordion" id="accordion-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="accordion-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="accordion-beginner" name="accordion" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="accordion-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="accordion-intermediate" name="accordion" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="accordion-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="accordion-advanced" name="accordion" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Autoharp -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Autoharp</div>
+                <div class="columns large-2">
+                    <label for="autoharp-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="autoharp" id="autoharp-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="autoharp-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="autoharp-beginner" name="autoharp" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="autoharp-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="autoharp-intermediate" name="autoharp" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="autoharp-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="autoharp-advanced" name="autoharp" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Banjo -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Banjo</div>
+                <div class="columns large-2">
+                  <label for="banjo-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="banjo" id="banjo-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="banjo-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="banjo-beginner" name="banjo" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="banjo-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="banjo-intermediate" name="banjo" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="banjo-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="banjo-advanced" name="banjo" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Bass -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Bass</div>
+                <div class="columns large-2">
+                  <label for="bass-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="bass" id="bass-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="bass-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="bass-beginner" name="bass" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="bass-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="bass-intermediate" name="bass" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="bass-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="bass-advanced" name="bass" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Bassoon -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Bassoon</div>
+                <div class="columns large-2">
+                  <label for="bassoon-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="bassoon" id="bassoon-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="bassoon-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="bassoon-beginner" name="bassoon" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="bassoon-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="bassoon-intermediate" name="bassoon" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="bassoon-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="bassoon-advanced" name="bassoon" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Cello -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Cello</div>
+                <div class="columns large-2">
+                  <label for="cello-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="cello" id="cello-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="cello-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="cello-beginner" name="cello" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="cello-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="cello-intermediate" name="cello" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="cello-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="cello-advanced" name="cello" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Clarinet -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Clarinet</div>
+                <div class="columns large-2">
+                  <label for="clarinet-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="clarinet" id="clarinet-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="clarinet-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="clarinet-beginner" name="clarinet" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="clarinet-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="clarinet-intermediate" name="clarinet" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="clarinet-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="clarinet-advanced" name="synchroclarinetnized" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Conga -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Conga</div>
+                <div class="columns large-2">
+                  <label for="conga-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="conga" id="conga-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="conga-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="conga-beginner" name="conga" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="conga-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="conga-intermediate" name="conga" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="conga-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="conga-advanced" name="conga" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Drums -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Drums</div>
+                <div class="columns large-2">
+                  <label for="drums-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="drums" id="drums-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="drums-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="drums-beginner" name="drums" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="drums-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="drums-intermediate" name="drums" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="drums-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="drums-advanced" name="drums" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Dulcimer -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Dulcimer</div>
+                <div class="columns large-2">
+                  <label for="dulcimer-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="dulcimer" id="dulcimer-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="dulcimer-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="dulcimer-beginner" name="dulcimer" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="dulcimer-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="dulcimer-intermediate" name="dulcimer" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="dulcimer-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="dulcimer-advanced" name="dulcimer" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Singing -->
+          <div class="survey-body" v-if="performanceStep == 4">
+            <div class="survey-body_title">Singing</div>
+            <div class="survey-body_hint">Define your level of expertise:</div>
+            <div class="survey-body_main-content">
+              <div class="row survey-table-header">
+                <div class="columns large-4"></div>
+                <div class="columns large-2"><span class="title-item">None</span></div>
+                <div class="columns large-2"><span class="title-item">Beginner</span></div>
+                <div class="columns large-2"><span class="title-item">Intermediate</span></div>
+                <div class="columns large-2"><span class="title-item">Advanced</span></div>
+              </div>
+              <!-- Country -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Country</div>
+                <div class="columns large-2">
+                    <label for="country-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="country" id="country-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="country-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="country-beginner" name="country" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="country-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="country-intermediate" name="country" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="country-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="country-advanced" name="country" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Folk -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Folk</div>
+                <div class="columns large-2">
+                    <label for="folk-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="folk" id="folk-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="folk-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="folk-beginner" name="folk" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="folk-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="folk-intermediate" name="folk" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="folk-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="folk-advanced" name="folk" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Jazz -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Jazz</div>
+                <div class="columns large-2">
+                  <label for="jazz-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="jazz" id="jazz-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="jazz-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="jazz-beginner" name="jazz" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="jazz-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="jazz-intermediate" name="jazz" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="jazz-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="jazz-advanced" name="jazz" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Musical theater -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Musical theater</div>
+                <div class="columns large-2">
+                  <label for="theater-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="theater" id="theater-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="theater-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="theater-beginner" name="theater" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="theater-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="theater-intermediate" name="theater" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="theater-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="theater-advanced" name="theater" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Opera -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Opera</div>
+                <div class="columns large-2">
+                  <label for="opera-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="opera" id="opera-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="opera-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="opera-beginner" name="opera" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="opera-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="opera-intermediate" name="opera" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="opera-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="opera-advanced" name="opera" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Pop -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Pop</div>
+                <div class="columns large-2">
+                  <label for="pop-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="pop" id="pop-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="pop-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="pop-beginner" name="pop" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="pop-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="pop-intermediate" name="pop" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="pop-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="pop-advanced" name="pop" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- R&B -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">R&B</div>
+                <div class="columns large-2">
+                  <label for="rb-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="rb" id="rb-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="rb-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="rb-beginner" name="rb" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="rb-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="rb-intermediate" name="rb" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="rb-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="rb-advanced" name="rb" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- RAP -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">RAP</div>
+                <div class="columns large-2">
+                  <label for="rap-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="rap" id="rap-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="rap-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="rap-beginner" name="rap" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="rap-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="rap-intermediate" name="rap" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="rap-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="rap-advanced" name="rap" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Yodeling -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Yodeling</div>
+                <div class="columns large-2">
+                  <label for="yodeling-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="yodeling" id="yodeling-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="yodeling-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="yodeling-beginner" name="yodeling" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="yodeling-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="yodeling-intermediate" name="yodeling" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="yodeling-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="yodeling-advanced" name="yodeling" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Vocal range -->
+          <div class="survey-body" v-if="performanceStep == 5">
+            <div class="survey-body_title">Vocal range</div>
+            <div class="survey-body_hint">Define your level of expertise:</div>
+            <div class="survey-body_main-content">
+              <div class="row survey-table-header">
+                <div class="columns large-4"></div>
+                <div class="columns large-2"><span class="title-item">None</span></div>
+                <div class="columns large-2"><span class="title-item">Beginner</span></div>
+                <div class="columns large-2"><span class="title-item">Intermediate</span></div>
+                <div class="columns large-2"><span class="title-item">Advanced</span></div>
+              </div>
+              <!-- Alto -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Alto</div>
+                <div class="columns large-2">
+                    <label for="alto-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="alto" id="alto-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="alto-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="alto-beginner" name="alto" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="alto-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="alto-intermediate" name="alto" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="alto-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="alto-advanced" name="alto" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Baritone -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Baritone</div>
+                <div class="columns large-2">
+                    <label for="baritone-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="baritone" id="baritone-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="baritone-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="baritone-beginner" name="baritone" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="baritone-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="baritone-intermediate" name="baritone" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="baritone-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="baritone-advanced" name="baritone" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Bass -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Bass</div>
+                <div class="columns large-2">
+                  <label for="bass-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="bass" id="bass-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="bass-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="bass-beginner" name="bass" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="bass-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="bass-intermediate" name="bass" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="bass-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="bass-advanced" name="bass" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Mezzo-soprano -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Mezzo-soprano</div>
+                <div class="columns large-2">
+                  <label for="mezzo-soprano-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="mezzo-soprano" id="mezzo-soprano-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="mezzo-soprano-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="mezzo-soprano-beginner" name="mezzo-soprano" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="mezzo-soprano-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="mezzo-soprano-intermediate" name="mezzo-soprano" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="mezzo-soprano-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="mezzo-soprano-advanced" name="mezzo-soprano" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Soprano -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Soprano</div>
+                <div class="columns large-2">
+                  <label for="soprano-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="soprano" id="soprano-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="soprano-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="soprano-beginner" name="soprano" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="soprano-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="soprano-intermediate" name="soprano" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="soprano-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="soprano-advanced" name="soprano" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+              <!-- Tenor -->
+              <div class="row">
+                <div class="columns large-4 small-12 checkbox-title">Tenor</div>
+                <div class="columns large-2">
+                  <label for="tenor-none" class="theme__checkbox skills-checkbox none"><input type="radio"  name="tenor" id="tenor-none" value="1" checked> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="tenor-beginner" class="theme__checkbox skills-checkbox beginner"><input type="radio" id="tenor-beginner" name="tenor" value="2"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="tenor-intermediate" class="theme__checkbox skills-checkbox intermediate"><input type="radio" id="tenor-intermediate" name="tenor" value="3"> <span class="checkmark"></span></label>
+                </div>
+                <div class="columns large-2">
+                  <label for="tenor-advanced" class="theme__checkbox skills-checkbox advanced"><input type="radio" id="tenor-advanced" name="tenor" value="4"> <span class="checkmark"></span></label>
+                </div>
+              </div>
+      
+            </div>
+          </div>
+          <!-- Additional skills -->
+          <div class="survey-body" v-if="performanceStep == 6">
+            <div class="survey-body_title">Additional skills</div>
+            <!-- First Addition Skill -->
+            <input class="addition-skills-text-input" id='addition-skill-1' type="text" placeholder="Description" v-if="additionSkillsAmount > 1">  
+            <!-- Second Addition Skill -->
+            <input class="addition-skills-text-input" id='addition-skill-2' type="text" placeholder="Description" v-if="additionSkillsAmount > 2">  
+            <!-- Third Addition Skill -->
+            <input class="addition-skills-text-input" id='addition-skill-3' type="text" placeholder="Description" v-if="additionSkillsAmount > 3">  
+            <!-- Fourth Addition Skill -->
+            <input class="addition-skills-text-input" id='addition-skill-4' type="text" placeholder="Description" v-if="additionSkillsAmount > 4">  
+            <!-- Fifth Addition Skill -->
+            <input class="addition-skills-text-input" id='addition-skill-5' type="text" placeholder="Description" v-if="additionSkillsAmount > 5">  
+            <!-- 6-th Addition Skill -->
+            <input class="addition-skills-text-input" id='addition-skill-6' type="text" placeholder="Description" v-if="additionSkillsAmount > 6">  
+            <!-- 7-th Addition Skill -->
+            <input class="addition-skills-text-input" id='addition-skill-7' type="text" placeholder="Description" v-if="additionSkillsAmount > 7">  
+            <!-- 8-th Addition Skill -->
+            <input class="addition-skills-text-input" id='addition-skill-8' type="text" placeholder="Description" v-if="additionSkillsAmount > 8">  
+            <!-- 9-th Addition Skill -->
+            <input class="addition-skills-text-input" id='addition-skill-9' type="text" placeholder="Description" v-if="additionSkillsAmount > 9">  
+            
+            <button class="add-skills-btn" @click="additionSkillsAmount++">add more</button>  
+          </div>
+          
+          <div class="survey-footer clearfix">
+            <button class="survey-continue-step" @click="continuePerformanceSkillsStep()">Continue</button>
+            <button class="survey-skip-step" @click="performanceSkillsSurvey = false, performanceStep = 1">skip</button>
+          </div>
+        </div>
+      
+      </div>
+  
+  
+    <!-- Footer Navigation -->
+    <div class="footer-navigation clearfix" v-if="currentAboveStep < 3 && totalStep == 1">
+      <button class="next-step navigation-item" @click="nextAboveStep()">NEXT STEP</button>
+      <button @click="skipAboutStep()" class="skip-step navigation-item" >skip</button>
+    </div>
+    <div class="footer-navigation clearfix" v-if="currentDetailsStep < 4 && totalStep == 2">
+        <button class="next-step navigation-item" @click="nextDetailsStep()">NEXT STEP</button>
+        <button @click="currentDetailsStep = 0" class="skip-step navigation-item" >skip</button>
+    </div>
+    <div class="footer-navigation clearfix" v-if=" totalStep == 3 && finalStep == 0">
+        <button class="next-step navigation-item" @click="finalStep = 1">FINISH PROFILE</button>
+    </div>
+
+    <!-- Pop-up Upgrade -->
+    <div class="upgrade-pop-up" v-if="upgradePopUp">
+      <div class="pop-up-header">Want video clips to showcase your <br> skills or resume credits? </div>
+      <div class="discount-block">
+        <div class="discount-title">Upgrade Now for ONLY </div>
+        <div class="discount-price">$6.66</div>
+        <div class="discount-subscribe">Subscribe Today for This <br> Special Offer!</div>
+        <div class="discount-counter-wrap">
+          <div class="counter-title">Offer Ends:</div>
+          <div class="counter">{{ timeLeft }}</div>
+        </div>
+        <button class="upgrade-btn">UPGRADE NOW</button>
+        <button class="no-thanks-btn" @click="upgradePopUp = false">no thanks</button>
+        <div class="dicsount-badge-wrap">
+          <div class="badge-price">$15.99</div>
+          <div class="badge-off">off</div>
+        </div>
+        
+      </div>
+      <div class="pop-up-footer">*BILLED ANNUALLY: $95.99 for 1 year</div>
+    </div>
+  </div>
+  
+
+    <!-- Vue  -->
+    <script src="js/vue.min.js"></script>
+    <!-- Vue Select -->
+    <script src="https://unpkg.com/vue-select@latest"></script>
+    <!-- Main Scripts  -->
+    <script src="js/common.js"></script>
+</body>
+</html>

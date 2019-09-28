@@ -1,0 +1,223 @@
+
+
+
+/* ------------ Media Queries ------------ */
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px)
+	.add-headshot-block,
+	.headshot-info-block
+		width: 100%
+	
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px)
+	.line-progress-set .progress-line-wrap
+		width: 90%
+	.section-item .section-item_descr
+		width: 60%
+	.order-first-mobile
+		order: 1
+	.order-last-mobile
+		order: 2
+	.headshot-info-block
+		height: auto
+		padding: 20px 4%
+		.info-desc
+			margin-top: 0
+	.add-headshot-block 
+		margin-top: 30px
+		height: 100px
+		.headshot-label
+	.headshot-info-block
+		height: auto
+	.add-headshot-block .headshot-label
+		margin: 1% auto
+	.survey-body
+		height: calc(100vh - 150px)
+		overflow-y: scroll
+	.survey-body .checkbox-title
+		padding-right: 40px
+	.survey-body .survey-table-header .title-item
+		display: none
+	.survey-body .checkbox-title
+		text-align: left
+	.skills-checkbox:after
+		position: absolute
+		top: -25px
+		font-size: 14px
+		color: #193560
+		left: 0
+	.skills-checkbox.none:after
+		content: 'None'
+	.skills-checkbox.beginner:after
+		content: 'Beginner'
+	.skills-checkbox.intermediate:after
+		content: 'Intmd'
+	.skills-checkbox.advanced:after
+		content: 'Advanced'
+	.survey-body
+		padding-bottom: 100px
+		background-color: rgba(216,216,216,0.3)
+	.survey-footer
+		height: auto
+		padding: 14px 10px
+		.survey-continue-step
+			height: 60px
+			font-size: 20px
+			font-weight: bold
+		.survey-skip-step
+			line-height: 60px
+	.survey-body .skills-checkbox
+		margin: 25px 0 30px 0
+		.checkmark
+			width: 30px
+			height: 30px
+	.theme__checkbox.skills-checkbox input:checked~.checkmark::after
+		width: 15px
+		height: 15px
+
+	.addition-skills-text-input
+		background-color: transparent
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) 
+	.header
+		position: fixed
+		top: 0
+		left: 0
+		right: 0
+		background-color: #fff
+		z-index: 100
+	.footer-navigation
+		height: auto
+		padding: 15px 4%
+		border-top: 1px solid #e3e3e3
+		position: fixed
+		bottom: 0
+		left: 0
+		right: 0
+		background-color: #fff
+		z-index: 100
+		.next-step
+			width: 160px
+			transition: all .2s ease .2s
+		
+	.main-section-wrap
+		max-height: calc(100vh - 150px)
+		z-index: 50
+		margin-top: 150px
+		background-color: #EFF2F6
+		.main-section
+			height: auto
+			min-height: auto
+			background-image: none
+	.mobile-user-info-wrap
+		display: block
+	.sidebar
+		display: none
+	.main-section,
+	.navigation 
+		width: 100%
+	.navigation 
+		height: auto
+		.navigation-item
+			padding: 10px 0 0 0
+	.main-section
+		padding: 32px 3% 60px
+	.headshot-info-block .headshot-img
+		width: 70%
+		margin: 0 auto
+	.add-headshot-block 
+		height: 130px
+		.headshot-label
+			width: 92%
+			height: 80%
+			margin: 3% auto
+	.upgrade-pop-up
+		width: 100%
+		top: -140px
+		left: 0
+		right: 0
+		bottom: 0
+		transform: translate(0, 0)
+		background-size: 100% 30%
+		.pop-up-header
+			padding: 0 20px
+			font-size: 18px
+			line-height: 24px
+	.discount-block
+		width: 90%
+		.dicsount-badge-wrap
+			right: -15px
+			top: -15px
+		.discount-title
+			width: 220px
+			margin: 0 auto
+	.special-skills-survey-wrap
+		top: -150px
+	.survey-body .survey-body_hint
+		padding: 20px 0
+	.survey-header
+		height: auto
+		padding: 25px
+
+
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) 
+	.main-section .section-title
+		text-align: left
+		font-size: 24px
+	.section-item 
+		padding: 5%
+		.section-item__icon
+			width: 50px
+			height: 50px
+			margin-right: 20px
+		.section-item_descr 
+			margin-top: 3px
+			width: 60% 
+			.title
+				font-size: 18px
+			.description
+				font-size: 14px
+				margin-top: 0
+	.headshot-info-block .info-desc
+		font-size: 14px
+	.headshot-info-block .headshot-img
+		width: 100%
+		margin-top: 10%
+	.add-headshot-block .cta-btn
+		font-size: 14px
+	.theme__checkbox
+		font-size: 16px
+	.age-input-block .input-title
+		font-size: 16px
+	.section-item.checked .section-item__icon .checked-icon
+		width: 60%
+		height: 60%
+	.survey-header 
+		.survey-title
+			font-size: 18px
+		.save-survey-btn
+			font-size: 14px
+			margin-top: 10px
+
+
+	.final-success-message-btn
+		margin: 10px 0
+		width: 45%
+
+// Extra small devices (portrait phones, less than 400px)
+@media (max-width: 399.98px) 
+	.headshot-info-block .info-desc
+		font-size: 12px
+	.headshot-info-block .headshot-img
+		margin-top: 14% 
+	.discount-block .dicsount-badge-wrap
+		top: -45px
+	.final-success-message-btn
+		font-size: 16px
+
+
+
+
